@@ -1,0 +1,30 @@
+/* Área matemática otimizada para toque Android e estudo offline. */
+.cy25-mathlab{margin:20px 0 6px;border:1px solid #357d8b;border-radius:17px;background:linear-gradient(145deg,#0a2936,#091724);color:#e9fff9;overflow:hidden}
+.cy25-mathlab summary{cursor:pointer;list-style:none;padding:15px 16px;font-size:16px;font-weight:800;line-height:1.4;touch-action:manipulation}
+.cy25-mathlab summary::-webkit-details-marker{display:none}
+.cy25-mathlab summary::after{content:'▾';float:right;color:#76e8be}
+.cy25-mathlab[open] summary::after{content:'▴'}
+.cy25-mathlab summary small{font-weight:600;font-size:11px;margin-left:5px;padding:2px 6px;border-radius:8px;background:#17674a;color:#fff}
+.cy25-mathlab-body{border-top:1px solid #285866;padding:13px;display:grid;gap:12px}
+.cy25-mathlab-body p{margin:0;color:#c8e9e2;line-height:1.55}
+.cy25-mathlab-body code{color:#9affd9}
+.cy25-mathlabel{font-weight:700;font-size:13px;color:#a1e5e0}
+.cy25-mathpresets{display:flex;flex-wrap:wrap;gap:7px}
+.cy25-mathpresets button{border:1px solid #399c8d;background:#123c42;color:#c6fff0;border-radius:999px;padding:9px 11px;font-size:12px;font-weight:750;cursor:pointer;min-height:39px}
+.cy25-mathdisplay{display:block;padding:14px;min-height:51px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #436c7e;background:#05121f;border-radius:12px;font-size:21px;font-family:ui-monospace,Consolas,monospace;color:#fff}
+.cy25-mathkeys{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.cy25-mathkeys.cy25-scientific{grid-template-columns:repeat(5,minmax(0,1fr))}
+.cy25-mathkeys button,.cy25-mathactions button,.cy25-mathsymbols button{appearance:none;min-width:0;min-height:46px;border:1px solid #276d74;border-radius:10px;background:#123744;color:#effffb;font-size:18px;font-weight:700;cursor:pointer;touch-action:manipulation}
+.cy25-mathkeys button:active,.cy25-mathactions button:active,.cy25-mathsymbols button:active{background:#24a69d;color:#062328}
+.cy25-scientific button{font-size:14px;background:#11303e}
+.cy25-mathactions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cy25-mathactions button{font-size:13px;font-weight:750;padding:8px 5px}
+.cy25-mathactions button[data-action=calc],.cy25-mathactions button[data-action=send]{background:#168477;border-color:#52c7b2;color:#fff}
+.cy25-mathresult{white-space:pre-wrap;overflow-wrap:anywhere;font-family:ui-monospace,Consolas,monospace;font-size:13px;line-height:1.6;margin:0;min-height:37px;padding:11px;border-radius:11px;background:#061b23;border-left:3px solid #49dcb6;color:#dafcf2}
+.cy25-mathgraph{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #32636b;background:#071a25}
+.cy25-mathgraph[hidden]{display:none}
+.cy25-mathsymbols{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.cy25-mathsymbols button{min-height:40px;font-size:20px}
+.cy25-mathnotes{width:100%;min-height:92px;resize:vertical;background:#061923;border:1px solid #376a78;border-radius:11px;padding:10px;color:#fff;font-size:15px;line-height:1.5}
+.cy25-mathhint{font-size:12px!important;color:#b6d8d1!important}
+@media(max-width:380px){.cy25-mathlab-body{padding:9px;gap:9px}.cy25-mathkeys{gap:5px}.cy25-mathkeys button{font-size:16px;min-height:43px}.cy25-scientific button{font-size:12px}.cy25-mathlab summary{padding:13px 10px;font-size:14px}}

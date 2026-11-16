@@ -1,0 +1,16 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const path=require('node:path');
+const code=fs.readFileSync(path.join(__dirname,'..','simlabs.js'),'utf8');
+const start=code.indexOf('function solveSoc('),end=code.indexOf("$('cy22SocRun')",start);
+assert(start>=0&&end>start);
+const sandbox={};vm.runInNewContext(code.slice(start,end)+'\nthis.fns={solveSoc,solveIam};',sandbox);
+assert.equal(sandbox.fns.solveSoc('investigate').ok,true);
+assert.equal(sandbox.fns.solveSoc('attack').ok,false);
+assert.equal(sandbox.fns.solveSoc('').ok,false);
+assert.equal(sandbox.fns.solveIam('read').ok,true);
+assert.equal(sandbox.fns.solveIam('admin').ok,false);
+assert.equal(sandbox.fns.solveIam('public').ok,false);
+assert(code.includes("complete('soc')")&&code.includes("complete('iam')"));
+console.log('OK: triagem SOC e IAM corrigem respostas e registram conclusão');

@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const html=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8');
+assert(html.includes("title:'Raciocínio guiado · '+x.title"),'Cybersecurity: raciocínio guiado ausente');
+assert(html.includes('const originalQuestions=x.questions||[]'),'Cybersecurity: derivação do conteúdo próprio ausente');
+assert(html.includes('if(step===4){')&&html.includes('Transforme conhecimento em prática'),'Trilhas extras: etapa reflexiva final ausente');
+assert(html.includes("Math.min(4,step+1)"),'Trilhas extras: avanço não chega à quinta etapa');
+assert(html.includes("window.cy12Finish=()=>"),'Trilhas extras: salvamento final ausente');
+assert(html.includes('function en20Check()'),'Inglês: treino escrito ausente');
+assert(html.includes('function en20Speak()'),'Inglês: treino de áudio ausente');
+assert(html.includes('Exercício opcional, tentativas ilimitadas'),'Inglês: atividade deve ser opcional');
+console.log('OK: aprofundamento transversal, quinta etapa e treino extra de inglês');

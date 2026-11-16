@@ -1,0 +1,25 @@
+// Testa a fila de revisão usando armazenamento simulado e sem navegador.
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),assert=require('node:assert/strict');
+const html=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8');
+const m=html.match(/<script id="cy16-methodology">([\s\S]*?)<\/script>/);
+assert(m,'Módulo do método não encontrado');
+const data=new Map();
+const localStorage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
+let time=Date.now();
+const FakeDate=class extends Date{static now(){return time}};
+const win={addEventListener(){}};
+vm.runInNewContext(m[1],{window:win,localStorage,Date:FakeDate,document:{getElementById(){return null}},console,lessons:[],ENGLISH_UNITS:[]});
+win.cy16Mark('english','a0-1',1);
+let records=JSON.parse(localStorage.getItem('cyberlab_method_v1'));
+assert.equal(records['english:a0-1'].streak,1);
+assert(records['english:a0-1'].due-time>=86399000,'Primeira revisão não está agendada para o dia seguinte');
+win.cy16Mark('english','a0-1',1);
+records=JSON.parse(localStorage.getItem('cyberlab_method_v1'));
+assert.equal(records['english:a0-1'].streak,2);
+assert(records['english:a0-1'].due-time>=3*86400000-1000);
+win.cy16Mark('english','a0-1',0);
+records=JSON.parse(localStorage.getItem('cyberlab_method_v1'));
+assert.equal(records['english:a0-1'].streak,0);
+assert(records['english:a0-1'].due-time<1000,'Erro deve ficar disponível para revisão imediata');
+assert.equal(records['english:a0-1'].attempts,3);
+console.log('APROVADO: intervalos de revisão, reforço de erros e persistência local.');

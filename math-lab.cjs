@@ -1,0 +1,35 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const vm=require('node:vm');
+const root=path.join(__dirname,'..'),sandbox={window:{}};
+vm.runInNewContext(fs.readFileSync(path.join(root,'math-lab.js'),'utf8'),sandbox);
+const {evaluate,solve}=sandbox.window.cy25Math;
+const approx=(actual,expected)=>assert(Math.abs(actual-expected)<1e-8,`${actual} !== ${expected}`);
+assert.equal(evaluate('2+3*4'),14);
+assert.equal(evaluate('(2+3)*4'),20);
+assert.equal(evaluate('-2^2'),-4);
+assert.equal(evaluate('2^3^2'),512);
+assert.equal(evaluate('5!'),120);
+assert.equal(evaluate('50%'),0.5);
+assert.equal(evaluate('2x+6',4),14);
+approx(evaluate('√(16)+sin(30)'),4.5);
+approx(evaluate('cos(π)',0,false),-1);
+approx(evaluate('2π'),2*Math.PI);
+assert.equal(evaluate('200*15%'),30);
+assert.throws(()=>evaluate('tan(90)'),/indefinido/);
+assert.match(solve('2x+6=14'),/x = 4\./);
+assert.match(solve('x=x'),/Infinitas soluções/);
+assert.match(solve('x+1=x+2'),/Sem solução/);
+assert.throws(()=>solve('x^2=9'),/lineares/);
+assert.throws(()=>evaluate('1/0'),/Divisão por zero/);
+assert.throws(()=>evaluate('constructor(1)'),/não reconhecida/);
+assert.throws(()=>evaluate('∫(x)'),/para anotações/);
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
+for(const file of ['math-lab.js','math-lab.css']){
+ assert(html.includes(file),`${file} não carregado`);
+ assert(sw.includes("'./"+file+"'"),`${file} fora do cache`);
+}
+assert(html.includes('window.cy25Math.attach(el'));
+console.log('OK: calculadora científica, equações, funções, símbolos e cache offline');
