@@ -1,4 +1,4 @@
-const CACHE='cyberlab-pwa-27-0-v1';
+const CACHE='cyberlab-pwa-27-1-navfix';
 const SHELL=['./','./index.html','./manifest.webmanifest','./simlabs.js','./simlabs.css','./deep-lessons.js','./deep-skills.js','./deep-advanced.js','./cases.js','./cases.css','./software-course.js','./faculdade.js','./faculdade-deep.js','./math-lab.js','./math-lab.css','./satc-core.js','./satc-1-3.js','./satc-4-6.js','./satc-7-8.js','./satc-upgrade.js','./academic-capstones.js','./learning-progressive.js','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('cyberlab-pwa-')&&key!==CACHE)await caches.delete(key);await self.clients.claim()})())});
