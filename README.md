@@ -39,7 +39,27 @@ Para executar localmente, sirva a pasta por HTTP (por exemplo, com `python -m ht
 - `LEIA-ME_INSTALACAO.md` — notas técnicas detalhadas de conteúdo, instalação e atualização.
 - `AUDITORIA_GERAL_27.md` — registro da revisão da versão 27.
 
-Há também scripts `.cjs` usados no trabalho de geração e revisão do conteúdo. O aplicativo em si roda no navegador.
+- `tests/*.cjs` — verificações de conteúdo, backup e regras das atividades, executadas com Node.js.
+
+O aplicativo roda no navegador. Node.js é usado nos testes, não como servidor do CYBERLAB.
+
+## O que estou aprendendo aqui
+
+Este é um projeto de estudante. Estou praticando JavaScript, organização de conteúdo, persistência local e os recursos básicos de um PWA. Ainda estou aprendendo a separar melhor a interface, o conteúdo e as regras que hoje se concentram em `index.html`.
+
+O material foi reunido e ampliado com apoio de IA. Isso não equivale a domínio dos assuntos: revisar exemplos, conferir referências e entender o código fazem parte do meu estudo. O uso dos nomes SATC/UNISATC nos arquivos indica uma referência curricular; este projeto não é oficial nem vinculado à instituição.
+
+## Executar os testes
+
+Com Node.js 24 ou superior, na pasta do projeto:
+
+```bash
+node --test tests/*.cjs
+```
+
+São 17 arquivos de testes. Eles verificam estruturas de aulas, respostas, cálculos, backup e recursos do PWA. O GitHub Actions executa essas verificações a cada alteração na branch principal e nas pull requests.
+
+Esses testes não avaliam a qualidade pedagógica de todo o material nem simulam todos os gestos e comportamentos de um celular real.
 
 ## Estado do projeto
 
@@ -49,7 +69,7 @@ Estou priorizando três pontos:
 2. Revisar conteúdo, exemplos e exercícios conforme avanço na graduação.
 3. Testar melhor o modo offline, os backups e as funções de voz em aparelhos Android reais.
 
-**Verificação recente:** a página pública abriu e o botão **Trilhas** navegou para a central de aprendizado em um navegador de computador. Isso não substitui testes de toque e de layout no Samsung.
+**Validação de interface:** a página pública e a navegação por **Trilhas** já foram verificadas em navegador de computador. A validação de toque, voz, instalação e uso offline no Samsung continua necessária.
 
 A estrutura já tem bastante material, mas quantidade de aulas não substitui validação. Bugs e limitações podem existir; registro as revisões nos documentos técnicos do repositório.
 

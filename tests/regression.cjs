@@ -41,7 +41,7 @@ assert.equal(manifest.name.includes('27.0'),true);
 for(const item of [manifest.start_url,'./index.html','./manifest.webmanifest',...manifest.icons.map(i=>i.src)]){
  assert(fs.existsSync(path.resolve(root,item)),'Arquivo PWA ausente: '+item);
 }
-assert(sw.includes('cyberlab-pwa-27-0'),'Cache precisa atualizar a versão');
+assert(sw.includes('cyberlab-pwa-27-1-navfix'),'Cache deve corresponder à versão 27.1 com correção de navegação');
 for(const asset of ['simlabs.js','simlabs.css'])assert(fs.existsSync(path.join(root,asset)),'Recurso de laboratório ausente: '+asset);
 new vm.Script(fs.readFileSync(path.join(root,'simlabs.js'),'utf8'));
 console.log('APROVADO:',scripts.length,'scripts;',handlers.length,'funções de botão;',lessons.length,'aulas Cybersecurity;',extraCount,'aulas adicionais; PWA completo.');
