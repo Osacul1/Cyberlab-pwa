@@ -43,7 +43,7 @@ Há também scripts `.cjs` usados no trabalho de geração e revisão do conteú
 
 Estou priorizando três pontos:
 
-1. Ajustar a navegação inferior e os detalhes de usabilidade em telas pequenas.
+1. Validar no Android a correção do dock inferior já incluída na versão 27.1 e resolver eventuais problemas de toque ou sobreposição.
 2. Revisar conteúdo, exemplos e exercícios conforme avanço na graduação.
 3. Testar melhor o modo offline, os backups e as funções de voz em aparelhos Android reais.
 
