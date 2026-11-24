@@ -6,6 +6,8 @@ Comecei o projeto porque queria estudar pelo celular sem depender de várias aba
 
 **[Abrir o CYBERLAB no navegador](https://osacul1.github.io/Cyberlab-pwa/)**
 
+![Trilhas, aula interativa e inglês no CYBERLAB](docs/portfolio.jpg)
+
 ## O que já existe
 
 - Trilhas de cybersecurity, inglês e conteúdos de Engenharia de Software.
@@ -65,11 +67,11 @@ Esses testes não avaliam a qualidade pedagógica de todo o material nem simulam
 
 Estou priorizando três pontos:
 
-1. Validar no Android a correção do dock inferior já incluída na versão 27.1 e resolver eventuais problemas de toque ou sobreposição.
+1. Acompanhar o menu inferior no Android após a correção da navegação da versão 27.1. No uso do projeto no celular, o menu está funcionando.
 2. Revisar conteúdo, exemplos e exercícios conforme avanço na graduação.
 3. Testar melhor o modo offline, os backups e as funções de voz em aparelhos Android reais.
 
-**Validação de interface:** a página pública e a navegação por **Trilhas** já foram verificadas em navegador de computador. A validação de toque, voz, instalação e uso offline no Samsung continua necessária.
+**Validação de interface:** a página pública e a navegação por **Trilhas** já foram verificadas em navegador de computador. Voz e uso offline ainda precisam de uma rodada de testes no Samsung.
 
 A estrutura já tem bastante material, mas quantidade de aulas não substitui validação. Bugs e limitações podem existir; registro as revisões nos documentos técnicos do repositório.
 
